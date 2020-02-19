@@ -23,7 +23,7 @@ A PowerShell Script for the Migration of C#-based .NET Framework projects to .NE
 
 Running the script as administrator will register the script in the Windows Explorer context menu for .csproj files.
 
-![Register Script](/Assets/Registration.jpg)
+![Register Script](Assets/Registration.jpg)
 
 # Running the script
 
