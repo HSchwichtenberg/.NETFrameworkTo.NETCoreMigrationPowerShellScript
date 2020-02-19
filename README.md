@@ -18,7 +18,7 @@ A PowerShell Script for the Migration of C#-based .NET Framework projects to .NE
 - Library
 - Unit Tests
 
-# Not supported yet:
+# Not supported yet
 - Webprojects (ASP.NET)
 
 # Installation
