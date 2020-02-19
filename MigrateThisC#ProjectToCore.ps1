@@ -63,8 +63,6 @@ if (-not (test-path $newParentFolderName)) { md $newParentFolderName }
 # Remove target project folder, if it DOES exists
 Remove-Item $newProjectFolder/* -Recurse -Force  -ea SilentlyContinue
 md $newProjectFolder -ea SilentlyContinue
-
-
 #region
 
 #region -------------------------- Getting data from existing project file
@@ -106,7 +104,6 @@ if ($nugets -ne $null) { $nugets.keys | ForEach-Object { print "PackageReference
 
 $applicationicon =  Get-RegExFromFile $projectfile '<ApplicationIcon>(.*)</ApplicationIcon>' 
 print "applicationicon: $applicationicon"
-
 #endregion
 
 #region -------------------------- Remove Destination Folder"
@@ -115,7 +112,6 @@ if (test-path $newProjectFolder) {
   warning "Removing existing files in $newProjectFolder..."
   rd $newProjectFolder -Force -Recurse
 }
-
 #endregion
 
 #region -------------------------- Copy Code
@@ -230,9 +226,6 @@ switch($c.toupper())
  "l" { $template = $projlibtemplate;  }
  default { return }
 }
-
-
-
 
 print "Target Folder: Press enter to accept the default [$($newParentFolderName)]"
 $defaultValue = 'default'
