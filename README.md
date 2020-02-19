@@ -1,4 +1,4 @@
-# .NET Framework To .NET Core Migration PowerShell Script
+# .NET Framework to .NET Core Migration PowerShell Script
 A PowerShell Script for the Migration of C#-based .NET Framework projects to .NET Core.
 - creates a clean SDK-style project file (.csproj) in a new folder
 - customizable templates for project file
