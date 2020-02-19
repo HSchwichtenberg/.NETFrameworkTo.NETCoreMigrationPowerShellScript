@@ -5,9 +5,11 @@ A PowerShell Script for the Migration of C#-based .NET Framework projects to .NE
 - copies all files from the original folder except /bin, /ob, .sln, .csproj and .vspscc
 - handles all files in the /Assets folder as Resource
 - migrates icon, rootnamespace, project references and packages references from original project
+- includes the Windows Compatibility Pack by default
 - does NOT set any build action (e.g. for EDMX, Typed DataSets)
 - does NOT exclude any files
 - does NOT integrate any other project settings e.g. Build Events
+- you can easily change these defaults or add additional settings
 
 # Supported Project Types
 - WPF
@@ -16,7 +18,7 @@ A PowerShell Script for the Migration of C#-based .NET Framework projects to .NE
 - Library
 - Unit Tests
 
-# Not supported yet:
+# Not supported yet
 - Webprojects (ASP.NET)
 
 # Installation
