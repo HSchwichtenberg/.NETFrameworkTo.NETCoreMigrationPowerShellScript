@@ -4,8 +4,8 @@
 . "$PSScriptRoot\CSProjTemplates.ps1"
 
 Head "A PowerShell Script for the Migration of C#-based .NET Framework projects to .NET Core 3.1"
-Head "(C) Dr. Holger Schwichtenberg 2019-2020"
-Head "Version: 0.3.0 (2020-02-19)"
+Head "Dr. Holger Schwichtenberg, www.IT-Visions.de 2019-2020"
+Head "Version: 0.3.1 (2020-02-19)"
 # ******************************************************
 
 #region -------------------------- Register "Migrate this C#-Project to .NET Core" command for .csproj
@@ -204,7 +204,21 @@ $defaultNugets = @{
 $sourceproject = $args[0] # Get path to .csproj from Script arguments
 if ($sourceproject -eq $null) { Write-Error "No path! :-("; Read-Host; exit; }
 
-print "Source Project: $sourceproject"
+$projectFolder = [System.IO.Path]::GetDirectoryName($sourceproject)
+$projektName = [System.IO.Path]::GetFileName(($sourceproject))
+$folderObj = (get-item $projectFolder)
+$parentfolder = $folderObj.Parent.FullName
+$newParentFolderName = $parentfolder + "#Core"
+
+print "Selected Source Folder: $projectFolder"
+print "Selected Project: $projektName"
+
+if (test-path ([System.IO.Path]::Combine($projectfolder, "packages.config")) )
+{
+  warning "There is still a packages.config in this project. You should move to <PackageReference>-Tags using Visual Studio. Continue anyway? (Y/N)"
+  $c = Read-Host
+  if ($c -ine "y" ) { exit }
+}
 
 $template = ""
 $c = read-host "Template: C=Console, W=WPF/WinForms, L=Library (DLL), U=Unit Tests Other=exit?"
@@ -217,10 +231,8 @@ switch($c.toupper())
  default { return }
 }
 
-$projectFolder = [System.IO.Path]::GetDirectoryName($sourceproject)
-$folderObj = (get-item $projectFolder)
-$parentfolder = $folderObj.Parent.FullName
-$newParentFolderName = $parentfolder + "#Core"
+
+
 
 print "Target Folder: Press enter to accept the default [$($newParentFolderName)]"
 $defaultValue = 'default'
