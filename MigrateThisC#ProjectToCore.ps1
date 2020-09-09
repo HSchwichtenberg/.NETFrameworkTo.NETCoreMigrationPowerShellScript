@@ -3,10 +3,16 @@
 . "$PSScriptRoot\ITV.util.ps1"
 . "$PSScriptRoot\CSProjTemplates.ps1"
 
-Head "A PowerShell Script for the Migration of C#-based .NET Framework projects to .NET Core 3.1"
+Head "A PowerShell Script for the Migration of C#-based .NET Framework projects to .NET Core 3.1 or .NET 5.0"
 Head "Dr. Holger Schwichtenberg, www.IT-Visions.de 2019-2020"
-Head "Version: 0.3.1 (2020-02-19)"
+Head "Skript-Version: 0.4.0 (2020-09-09)"
+Head "Using .NET SDK Version: $(dotnet --version)"
 # ******************************************************
+
+$TFM = "net5.0" # "net5.0" or "netcoreapp3.1"
+$defaultNugets = @{
+  "Microsoft.Windows.Compatibility"="5.0.0-preview.8.20407.11" # or: "Microsoft.Windows.Compatibility"="3.1.1"
+}
 
 #region -------------------------- Register "Migrate this C#-Project to .NET Core" command for .csproj
 if ((New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator))
@@ -140,7 +146,7 @@ $csproj = $template
 $csproj = $csproj.Replace("[DATE]",(get-Date))
 $csproj = $csproj.Replace("[rootnamespace]",$rootnamespace)
 $csproj = $csproj.Replace("[icon]",$applicationicon)
-
+$csproj = $csproj.Replace("[TFM]",$TFM)
 $projRef = ""
 foreach($r in $projects)
 {
@@ -193,10 +199,6 @@ return $newProjectFolder
 
 #region ############################ Main
 
-$defaultNugets = @{
-  "Microsoft.Windows.Compatibility"="3.1.0"
-}
-
 $sourceproject = $args[0] # Get path to .csproj from Script arguments
 if ($sourceproject -eq $null) { Write-Error "No path! :-("; Read-Host; exit; }
 
@@ -204,7 +206,7 @@ $projectFolder = [System.IO.Path]::GetDirectoryName($sourceproject)
 $projektName = [System.IO.Path]::GetFileName(($sourceproject))
 $folderObj = (get-item $projectFolder)
 $parentfolder = $folderObj.Parent.FullName
-$newParentFolderName = $parentfolder + "#Core"
+$newParentFolderName = $parentfolder + "#" + $TFM.Replace(".","")
 
 print "Selected Source Folder: $projectFolder"
 print "Selected Project: $projektName"

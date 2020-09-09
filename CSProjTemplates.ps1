@@ -6,11 +6,18 @@ $projEXETemplate =
 
   <PropertyGroup>
     <OutputType>exe</OutputType>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>[TFM]</TargetFramework>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <Deterministic>false</Deterministic>
     <RootNamespace>[rootnamespace]</RootNamespace>
     <ApplicationIcon>[icon]</ApplicationIcon>
+    <PublishSingleFile>true</PublishSingleFile>
+    <IncludeNativeLibrariesInSingleFile>true</IncludeNativeLibrariesInSingleFile>
+    <IncludeSymbolsInSingleFile>true</IncludeSymbolsInSingleFile>
+    <DebugType>embedded</DebugType>
+    <PublishTrimmed>false</PublishTrimmed>
+    <PublishMode>Link</PublishMode>
+    <UseAppHost>true</UseAppHost>
   </PropertyGroup>
 
 <!-- Assets -->
@@ -42,7 +49,7 @@ $projWPFTemplate =
 
   <PropertyGroup>
     <OutputType>winexe</OutputType>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>[TFM]</TargetFramework>
     <UseWPF>true</UseWPF>
     <UseWindowsForms>true</UseWindowsForms>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
