@@ -122,7 +122,7 @@ $projTestTemplate =
 <Project Sdk="Microsoft.NET.Sdk">
 
 <PropertyGroup>
- <TargetFramework>netcoreapp3.1</TargetFramework>
+ <TargetFramework>[TFM]</TargetFramework>
  <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
  <Deterministic>false</Deterministic>
  <RootNamespace>[rootnamespace]</RootNamespace>
@@ -136,10 +136,10 @@ $projTestTemplate =
 
 <!-- Nuget Packages -->
   <ItemGroup>
-  <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.2.0" />
-  <PackageReference Include="MSTest.TestAdapter" Version="2.0.0" />
-  <PackageReference Include="MSTest.TestFramework" Version="2.0.0" />
-  <PackageReference Include="coverlet.collector" Version="1.0.1" />
+  <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.3.0" />
+  <PackageReference Include="MSTest.TestAdapter" Version="2.1.2" />
+  <PackageReference Include="MSTest.TestFramework" Version="2.1.2" />
+  <PackageReference Include="coverlet.collector" Version="1.3.0" />
    <!-- Other Packages -->
 [NugetReference]
   </ItemGroup>
