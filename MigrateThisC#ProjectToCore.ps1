@@ -18,7 +18,7 @@ $defaultNugets = @{
 if ((New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator))
 {
 New-PSDrive -Name HKCR -PSProvider Registry -Root HKEY_CLASSES_ROOT -ea SilentlyContinue | out-null
-$regPath = "HKCR:PROGID\shell\Migrate this C#-Project to .NET Core\"
+$regPath = "HKCR:PROGID\shell\Migrate this C#-Project to .NET Core or .NET 5\"
 $progIds = (Get-ItemProperty  HKCR:.csproj\OpenWithProgids | gm | where name -Like "VisualStudio*").Name
 
 foreach($progID in $progIds)
@@ -32,7 +32,7 @@ foreach($progID in $progIds)
   $value = 'powershell.exe -File "'  + $PSScriptRoot +"\" + $MyInvocation.MyCommand.Name + '" "%1"'
   New-ItemProperty -Path $registryPath -Name $name -Value $value -PropertyType String -Force | Out-Null
   }
-  success "DONE! Run script as normal user for migrating C# projects to .NET Core!"
+  success "DONE! Run script as normal user for migrating C# projects to .NET Core\.NET 5!"
   Exit-ReturnKey
 }
 #endregion
@@ -42,10 +42,10 @@ function Migrate-Project($projectfile, $newParentFolderName, $template, $project
 {    
 <#
   .SYNOPSIS
-    convert a .NET Framework project to .NET Core
+    convert a .NET Framework project to .NET Core\.NET 5
 #>
 
-h1 "Converting .NET Framework project to .NET Core: $projectFile"
+h1 "Converting .NET Framework project to .NET Core\.NET 5: $projectFile"
 
 #region -------------------------- Paths
 h2 "Creating paths..."
