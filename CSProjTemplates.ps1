@@ -112,7 +112,7 @@ $projLibTemplate =
 
   <PropertyGroup>
     <OutputType>Library</OutputType>
-    <TargetFramework>netstandard2.1</TargetFramework>
+    <TargetFramework>[TFM]</TargetFramework>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <Deterministic>false</Deterministic>
     <RootNamespace>[rootnamespace]</RootNamespace>
