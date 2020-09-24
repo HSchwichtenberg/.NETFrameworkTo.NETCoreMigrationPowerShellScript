@@ -222,10 +222,10 @@ $template = ""
 $c = read-host "Template: C=Console, W=WPF/WinForms, L=Library (DLL), U=Unit Tests Other=exit?"
 switch($c.toupper())
 {
- "w" { $template = $projwpftemplate;  }
- "c" { $template = $projEXETemplate; }
- "u" { $template = $projTestTemplate;  }
- "l" { $template = $projlibtemplate;  }
+ "W" { $template = $projwpftemplate;  }
+ "C" { $template = $projEXETemplate; }
+ "U" { $template = $projTestTemplate;  }
+ "L" { $template = $projlibtemplate;  }
  default { return }
 }
 
