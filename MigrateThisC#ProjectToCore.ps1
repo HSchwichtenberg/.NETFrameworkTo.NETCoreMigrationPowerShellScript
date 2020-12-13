@@ -5,13 +5,14 @@
 
 Head "A PowerShell Script for the Migration of C#-based .NET Framework projects to .NET Core 3.1 or .NET 5.0"
 Head "Dr. Holger Schwichtenberg, www.IT-Visions.de 2019-2020"
-Head "Skript-Version: 0.4.0 (2020-09-09)"
+Head "Skript-Version: 0.5.0 (2020-12-13)"
 Head "Using .NET SDK Version: $(dotnet --version)"
 # ******************************************************
 
 $TFM = "net5.0" # "net5.0" or "netcoreapp3.1"
+$TFMWindows = "net5.0-windows" # "net5.0" or "netcoreapp3.1"
 $defaultNugets = @{
-  "Microsoft.Windows.Compatibility"="5.0.0-preview.8.20407.11" # or: "Microsoft.Windows.Compatibility"="3.1.1"
+  "Microsoft.Windows.Compatibility"="5.0.0" # or: "Microsoft.Windows.Compatibility"="3.1.1"
 }
 
 #region -------------------------- Register "Migrate this C#-Project to .NET Core" command for .csproj
@@ -147,6 +148,7 @@ $csproj = $csproj.Replace("[DATE]",(get-Date))
 $csproj = $csproj.Replace("[rootnamespace]",$rootnamespace)
 $csproj = $csproj.Replace("[icon]",$applicationicon)
 $csproj = $csproj.Replace("[TFM]",$TFM)
+$csproj = $csproj.Replace("[TFMWINDOWS]",$TFMWINDOWS)
 $projRef = ""
 foreach($r in $projects)
 {

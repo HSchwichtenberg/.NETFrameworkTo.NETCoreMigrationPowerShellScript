@@ -54,11 +54,11 @@ $projEXETemplate =
 $projWPFTemplate = 
 @"
 <!-- generated projWPFTemplate by https://github.com/HSchwichtenberg/.NETFrameworkTo.NETCoreMigrationPowerShellScript [DATE] -->
-<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+<Project Sdk="Microsoft.NET.Sdk">
 
 <!-- Framework -->
   <PropertyGroup>
-    <TargetFramework>[TFM]</TargetFramework>
+    <TargetFramework>[TFMWINDOWS]</TargetFramework>
     <OutputType>winexe</OutputType>
     <UseWPF>true</UseWPF>
     <UseWindowsForms>true</UseWindowsForms>
@@ -74,7 +74,7 @@ $projWPFTemplate =
 
 <!-- Publishing -->
   <PropertyGroup>
-    <PublishSingleFile>true</PublishSingleFile>
+    <PublishSingleFile>false</PublishSingleFile>
     <IncludeNativeLibrariesInSingleFile>true</IncludeNativeLibrariesInSingleFile>
     <IncludeSymbolsInSingleFile>true</IncludeSymbolsInSingleFile>
     <DebugType>embedded</DebugType>
