@@ -3,16 +3,16 @@
 . "$PSScriptRoot\ITV.util.ps1"
 . "$PSScriptRoot\CSProjTemplates.ps1"
 
-Head "A PowerShell Script for the Migration of C#-based .NET Framework projects to .NET Core 3.1 or .NET 5.0"
-Head "Dr. Holger Schwichtenberg, www.IT-Visions.de 2019-2020"
-Head "Skript-Version: 0.5.0 (2020-12-13)"
+Head "A PowerShell Script for the Migration of C#-based .NET Framework projects to .NET Core 3.1 or .NET 5.0 or .NET 6.0"
+Head "Dr. Holger Schwichtenberg, www.IT-Visions.de 2019-2021"
+Head "Skript-Version: 0.6.0 (2021-11-22)"
 Head "Using .NET SDK Version: $(dotnet --version)"
 # ******************************************************
 
-$TFM = "net5.0" # "net5.0" or "netcoreapp3.1"
-$TFMWindows = "net5.0-windows" # "net5.0" or "netcoreapp3.1"
+$TFM = "net6.0" # or "net5.0" or "netcoreapp3.1"
+$TFMWindows = "net6.0-windows" # or "net5.0" or "netcoreapp3.1"
 $defaultNugets = @{
-  "Microsoft.Windows.Compatibility"="5.0.0" # or: "Microsoft.Windows.Compatibility"="3.1.1"
+  "Microsoft.Windows.Compatibility"="6.0.0" # or: "Microsoft.Windows.Compatibility"="5.0.2" or: "Microsoft.Windows.Compatibility"="3.1.2"
 }
 
 #region -------------------------- Register "Migrate this C#-Project to .NET Core" command for .csproj
@@ -43,10 +43,10 @@ function Migrate-Project($projectfile, $newParentFolderName, $template, $project
 {    
 <#
   .SYNOPSIS
-    convert a .NET Framework project to .NET Core\.NET 5
+    convert a .NET Framework project to .NET Core\.NET 5\.NET 6
 #>
 
-h1 "Converting .NET Framework project to .NET Core\.NET 5: $projectFile"
+h1 "Converting .NET Framework project to .NET Core\.NET 5\.NET 6: $projectFile"
 
 #region -------------------------- Paths
 h2 "Creating paths..."

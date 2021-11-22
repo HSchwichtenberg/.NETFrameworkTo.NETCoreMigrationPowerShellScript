@@ -161,10 +161,9 @@ $projTestTemplate =
 
 <!-- Nuget Packages -->
   <ItemGroup>
-  <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.3.0" />
-  <PackageReference Include="MSTest.TestAdapter" Version="2.1.2" />
-  <PackageReference Include="MSTest.TestFramework" Version="2.1.2" />
-  <PackageReference Include="coverlet.collector" Version="1.3.0" />
+  <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.0.0" />
+  <PackageReference Include="MSTest.TestAdapter" Version="2.2.7" />
+  <PackageReference Include="MSTest.TestFramework" Version="2.2.7" />
    <!-- Other Packages -->
 [NugetReference]
   </ItemGroup>
