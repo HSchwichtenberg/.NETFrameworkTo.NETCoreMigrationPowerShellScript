@@ -1,5 +1,5 @@
-# .NET Framework to .NET Core/.NET 5/.NET 6 Migration PowerShell Script
-A PowerShell Script for the Migration of C#-based .NET Framework projects to .NET Core or .NET 5.0 or .NET 6.0
+# .NET Framework to .NET Core/.NET 5/.NET 6/.NET 7 Migration PowerShell Script
+A PowerShell Script for the Migration of C#-based .NET Framework projects to .NET Core or .NET 5.0 or .NET 6.0 or .NET 7.0
 - creates a clean .NET SDK-style project file (.csproj) in a new folder
 - customizable templates for project file
 - copies all files from the original folder except /bin, /ob, .sln, .csproj and .vspscc
