@@ -3,23 +3,23 @@
 . "$PSScriptRoot\ITV.util.ps1"
 . "$PSScriptRoot\CSProjTemplates.ps1"
 
-Head "A PowerShell Script for the Migration of C#-based .NET Framework projects to .NET Core 3.1 or .NET 5.0 or .NET 6.0"
-Head "Dr. Holger Schwichtenberg, www.IT-Visions.de 2019-2021"
-Head "Skript-Version: 0.6.0 (2021-11-22)"
+Head "A PowerShell Script for the Migration of C#-based .NET Framework projects to .NET 8.0 or .NET 9.0"
+Head "Dr. Holger Schwichtenberg, www.IT-Visions.de 2019-2025"
+Head "Skript-Version: 0.9.0 (2025-03-01)"
 Head "Using .NET SDK Version: $(dotnet --version)"
 # ******************************************************
 
-$TFM = "net6.0" # or "net5.0" or "netcoreapp3.1"
-$TFMWindows = "net6.0-windows" # or "net5.0" or "netcoreapp3.1"
+$TFM = "net9.0" # or "net8.0"
+$TFMWindows = "net9.0-windows" # or "net8.0" 
 $defaultNugets = @{
-  "Microsoft.Windows.Compatibility"="6.0.0" # or: "Microsoft.Windows.Compatibility"="5.0.2" or: "Microsoft.Windows.Compatibility"="3.1.2"
+  "Microsoft.Windows.Compatibility"="9.0.*" # or: "Microsoft.Windows.Compatibility"="8.0.*" 
 }
 
 #region -------------------------- Register "Migrate this C#-Project to .NET Core" command for .csproj
 if ((New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator))
 {
 New-PSDrive -Name HKCR -PSProvider Registry -Root HKEY_CLASSES_ROOT -ea SilentlyContinue | out-null
-$regPath = "HKCR:PROGID\shell\Migrate this C#-Project to .NET Core or .NET 5\"
+$regPath = "HKCR:PROGID\shell\Migrate this C#-Project to modern .NET"
 $progIds = (Get-ItemProperty  HKCR:.csproj\OpenWithProgids | gm | where name -Like "VisualStudio*").Name
 
 foreach($progID in $progIds)
@@ -33,7 +33,7 @@ foreach($progID in $progIds)
   $value = 'powershell.exe -File "'  + $PSScriptRoot +"\" + $MyInvocation.MyCommand.Name + '" "%1"'
   New-ItemProperty -Path $registryPath -Name $name -Value $value -PropertyType String -Force | Out-Null
   }
-  success "DONE! Run script as normal user for migrating C# projects to .NET Core\.NET 5!"
+  success "DONE! Run script as normal user for migrating C# projects to modern .NET"
   Exit-ReturnKey
 }
 #endregion
@@ -43,10 +43,10 @@ function Migrate-Project($projectfile, $newParentFolderName, $template, $project
 {    
 <#
   .SYNOPSIS
-    convert a .NET Framework project to .NET Core\.NET 5\.NET 6
+    convert a .NET Framework project to modern .NET
 #>
 
-h1 "Converting .NET Framework project to .NET Core\.NET 5\.NET 6: $projectFile"
+h1 "Converting .NET Framework project to modern .NET: $projectFile"
 
 #region -------------------------- Paths
 h2 "Creating paths..."
