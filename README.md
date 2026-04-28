@@ -1,5 +1,5 @@
-# .NET Framework to modern .NET (.NET 8.0 / .NET 9.0) Migration PowerShell Script
-A PowerShell Script for the Migration of C#-based .NET Framework projects to .NET 8.0 or .NET 9.0
+# .NET Framework to modern .NET (.NET 8.0 / .NET 9.0 / .NET 10.0) Migration PowerShell Script
+A PowerShell Script for the Migration of C#-based .NET Framework projects to .NET 8.0 or .NET 9.0 or .NET 10.0
 - creates a clean .NET SDK-style project file (.csproj) in a new folder
 - customizable templates for project file
 - copies all files from the original folder except /bin, /ob, .sln, .csproj and .vspscc
@@ -18,7 +18,7 @@ A PowerShell Script for the Migration of C#-based .NET Framework projects to .NE
 - Library
 - Unit Tests
 
-# Not supported yet
+# Not supported
 - Webprojects (ASP.NET)
 
 # Installation
