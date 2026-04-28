@@ -3,16 +3,16 @@
 . "$PSScriptRoot\ITV.util.ps1"
 . "$PSScriptRoot\CSProjTemplates.ps1"
 
-Head "A PowerShell Script for the Migration of C#-based .NET Framework projects to .NET 8.0 or .NET 9.0"
-Head "Dr. Holger Schwichtenberg, www.IT-Visions.de 2019-2025"
-Head "Skript-Version: 0.9.0 (2025-03-01)"
+Head "A PowerShell Script for the Migration of C#-based .NET Framework projects to .NET 8.0 or .NET 9.0 or .NET 10.0"
+Head "Dr. Holger Schwichtenberg, www.IT-Visions.de 2019-2026"
+Head "Skript-Version: 0.10.0 (2026-04-28)"
 Head "Using .NET SDK Version: $(dotnet --version)"
 # ******************************************************
 
-$TFM = "net9.0" # or "net8.0"
-$TFMWindows = "net9.0-windows" # or "net8.0" 
+$TFM = "net10.0" # or "net9.0" or "net8.0"
+$TFMWindows = "net10.0-windows" # or "net9.0" or "net8.0"
 $defaultNugets = @{
-  "Microsoft.Windows.Compatibility"="9.0.*" # or: "Microsoft.Windows.Compatibility"="8.0.*" 
+  "Microsoft.Windows.Compatibility"="10.0.*" # or "Microsoft.Windows.Compatibility"="9.0.*" or "Microsoft.Windows.Compatibility"="8.0.*" 
 }
 
 #region -------------------------- Register "Migrate this C#-Project to .NET Core" command for .csproj
